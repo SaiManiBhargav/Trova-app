@@ -438,7 +438,7 @@ class Inception:
         :return:
             Nothing.
         """
-
+        ls={}
         # Get a sorted index for the pred-array.
         idx = pred.argsort()
 
@@ -452,10 +452,10 @@ class Inception:
 
             # Predicted score (or probability) for this class.
             score = pred[cls]
-
+            temp = {f"{name}": f"{score:>6.2%}"}
             # Print the score and class-name.
-            print("{0:>6.2%} : {1}".format(score, name))
-
+            ls.update(temp)
+        return ls
     def transfer_values(self, image_path=None, image=None):
         """
         Calculate the transfer-values for the given image.
